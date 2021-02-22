@@ -1,5 +1,6 @@
 package com.kike.colegio.controladores.rest;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,30 +42,22 @@ public class AlumnoControllerR {
 	}
 	
 	// LISTAR -------------------------------------------------------------------------------------------------------------------
-	// llamada en general
-	@GetMapping(value = "/alumnos")
-	public Iterable<AlumnoEntity> listarTodosAlumnos(){
-		/* Si quiero obtener un alumno por id o algun otro parametro le introducto un @ReqeustParam y el campo*/
+	@GetMapping(value="/alumnos")
+	public Iterable<AlumnoEntity> listaTodosAlumnos(){
 		return alumnoRepository.findAll();
+		
 	}
-	// Llamada por id 
-	@GetMapping(value = "/alumnos/{id}")
-	public Optional<AlumnoEntity> listarTodosAlumnosiD(
-			@RequestParam(value="id", required = false) Integer id){
-		/* Si quiero obtener un alumno por id o algun otro parametro le introducto un @ReqeustParam y el campo*/
+	@GetMapping(value="/alumnos/{id}")
+	public Optional<AlumnoEntity> buscarAlumnoPorId(@PathVariable("id") Integer id){
 		return alumnoRepository.findById(id);
 	}
 	
-	
-	// Llamada por id + nombre
-	@GetMapping(value = "/alumnos", params = { "id", "nombre"})
-	public Iterable <AlumnoDTO> listarTodosAlumnosporIDyNombre(
-			@RequestParam("id") Integer id,
-			@RequestParam("nombre") String nombre){
-		/* Si quiero obtener un alumno por id o algun otro parametro le introducto un @ReqeustParam y el campo*/
+	@GetMapping(value="/alumnos/",params= {"id","nombre"})
+	public List<AlumnoDTO> listarAlumnosPorIdNombre(
+			@RequestParam("id")Integer id,
+			@RequestParam("nombre")String nombre){
 		return alumnoDAO.obtenerAlumnosporIdyNombre(id, nombre);
 	}
-	
 	
 	// ACTUALIZAR -------------------------------------------------------------------------------------------------------------------
 	@PutMapping(value="/alumnos")

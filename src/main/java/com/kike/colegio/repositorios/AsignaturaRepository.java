@@ -22,6 +22,11 @@ public interface AsignaturaRepository extends CrudRepository<AsignaturaEntity, I
 					  @Param("curso") Integer curso,
 					  @Param("tasa") Double tasa);
 
-	void save(AsignaturaRepository asignatura);
+	@Query(value="select new com.kike.colegio.dtos.AsignaturaDTO (a.id, a.nombre, a.curso, a.tasa) "
+			+"FROM com.kike.colegio.entities.AsignaturaEntity a "
+			+"WHERE (a.id LIKE CONCAT('%',:id,'%') or :id is null) "
+			+"AND a.nombre LIKE CONCAT('%',:nombre,'%') ")
+	
+	List<AsignaturaDTO>buscaAsignaturaporIDyNombre(@Param("id") Integer id, @Param("nombre") String nombre);
 	
 }
