@@ -21,5 +21,7 @@ public interface AsignaturaRepository extends CrudRepository<AsignaturaEntity, I
 					  @Param("nombre") String nombre,
 					  @Param("curso") Integer curso,
 					  @Param("tasa") Double tasa);
+
+	void save(AsignaturaRepository asignatura);
 	
 }

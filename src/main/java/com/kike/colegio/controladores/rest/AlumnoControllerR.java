@@ -77,6 +77,6 @@ public class AlumnoControllerR {
 	@DeleteMapping(value="/alumnos/{id}")
 	public ResponseEntity<String> borrarAlumno(@PathVariable("id") Integer id){
 		alumnoRepository.deleteById(id);
-		 return new ResponseEntity<> ("actualización correcta", HttpStatus.OK);
+		 return new ResponseEntity<> ("Borrado correcta", HttpStatus.OK);
 	}
 }

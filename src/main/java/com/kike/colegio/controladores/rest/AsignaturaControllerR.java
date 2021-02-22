@@ -28,9 +28,9 @@ public class AsignaturaControllerR {
 	
 	// INSERTAR -------------------------------------------------------------------------------------------------------------------
 	@PostMapping("/asignaturas")
-	public ResponseEntity<String> insertarAlumno (@RequestBody AsignaturaRepository asignatura){
+	public ResponseEntity<String> insertarAsignatura (@RequestBody AsignaturaRepository asignatura){
 		
-		//asignaturaRepository.save(asignatura);
+		asignaturaRepository.save(asignatura);
 		
 		return new ResponseEntity<>("Inserción correcta", HttpStatus.OK);
 		
