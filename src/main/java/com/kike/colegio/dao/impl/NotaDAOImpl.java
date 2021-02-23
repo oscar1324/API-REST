@@ -82,4 +82,10 @@ public class NotaDAOImpl implements NotaDAO {
 		return 1;
 	}
 
+	@Override
+	public void actualizarNota(Double nota, Integer idAlumno, Integer idAsignatura, Double nota2, String fecha) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

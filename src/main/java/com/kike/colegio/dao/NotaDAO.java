@@ -12,4 +12,5 @@ public interface NotaDAO {
 	Integer insertarNota(Integer idAlumno, Integer idAsignatura, Double nota, String fecha);
 	Integer actualizarNota(Integer idNota, Integer idAlumno, Integer idAsignatura, Double nota, String fecha);
 	Integer eliminarNota(Integer id);
+	void actualizarNota(Double nota, Integer idAlumno, Integer idAsignatura, Double nota2, String fecha);
 }
